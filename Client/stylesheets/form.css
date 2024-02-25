@@ -1,0 +1,151 @@
+.container form:not(.captcha) {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    gap: 10px;
+}
+
+.container form .inputs.small .input-info, .container form .inputs label {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.container form .inputs, .container form .small-inputs {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.container form .small-inputs {
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+}
+
+.container form .small-inputs label {
+    flex-grow: 1;
+    min-width: 150px;
+}
+
+.container form .inputs input, .container form .inputs textarea, .container form .small-inputs label input {
+    height: 40px;
+    background-color: #e5e5e5;
+    color: black;
+    border: 0;
+    padding: 10px;
+    padding-right: 60px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.container form .inputs textarea {
+    height: auto;
+    min-height: 150px;
+    font-size: 14px;
+}
+
+.container form .inputs input:focus:not(textarea), .container form .small-inputs label input:focus{
+    background-color: #cecdcd;
+    outline: none;
+}
+
+.container form .inputs textarea:focus {
+    background-color: #cecdcd;
+    outline: none;
+}
+
+
+.container form .send-btn {
+    width: auto;
+    height: 40px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background-color: #2181e0;
+    color: white;
+    border: 0;
+    border-radius: 8px;
+    margin-top: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.container form button:hover {
+    filter: brightness(90%);
+}
+
+.container form button.disabled {
+    filter: grayscale(100%);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.container form .inputs input.error, .container form .small-inputs input.error, .container form .inputs textarea.error {
+    border: 2px solid red;
+    box-sizing: border-box;
+}
+
+.container form .inputs .exceeded {
+    position: absolute;
+    bottom: 100px;
+    right: 0px;
+    color: #656565;
+    width: auto;
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    font-size: 12px;
+    z-index: 30;
+}
+
+.container form .inputs p, .container form .small-inputs label p {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.container form .inputs p .charLength, .container form .small-inputs label p .charLength {
+    position: relative;
+    color: #656565;
+    top: 45px;
+    right: 10px;
+    font-size: 12px;
+}
+
+.container form .inputs p .charLength.error, .container form .small-inputs label p .charLength.error {
+    color: red;
+}
+
+.loader {
+    border: 3px solid rgba(0, 0, 0, 0.25); /* Light grey */
+    border-top: 3px solid #ffffff; /* Blue */
+    border-radius: 100px;
+    width: 15px;
+    height: 15px;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

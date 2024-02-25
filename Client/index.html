@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV Jens Bouma </title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script defer src="js/index.js"></script>
+    <script defer src="js/gdpr.js"></script>
+    <script defer src="js/form.js"></script>
+    <script defer src="js/alerts.js"></script>
+    <script defer src="js/captcha.js"></script>
+    <script defer type="module" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!--    <script defer src="https://www.google.com/recaptcha/api.js"></script>-->
+    <link rel="stylesheet" href="stylesheets/captcha.css">
+</head>
+
+<body>
+
+<div class="page">
+    <nav class="nav" id="nav">
+        <button class="nav-link" id="skillsBtn" onclick="handleNav('skills', false)">
+            <svg class="skills" xmlns="http://www.w3.org/2000/svg" width="18.999" height="23" viewBox="0 0 18.999 23">
+                <line id="Line_1" data-name="Line 1" x2="10" transform="translate(0 3.5)" fill="none" stroke="" stroke-width="2"/>
+                <line id="Line_2" data-name="Line 2" x2="10" transform="translate(0 11.5)" fill="none" stroke="" stroke-width="2"/>
+                <line id="Line_3" data-name="Line 3" x2="10" transform="translate(0 19.5)" fill="none" stroke="" stroke-width="2"/>
+                <path class="check" id="Icon_awesome-check-circle" data-name="Icon awesome-check-circle" d="M7.563,4.063a3.5,3.5,0,1,1-3.5-3.5A3.5,3.5,0,0,1,7.563,4.063Zm-3.9,1.853,2.6-2.6a.226.226,0,0,0,0-.319L5.935,2.68a.226.226,0,0,0-.319,0L3.5,4.8l-.989-.989a.226.226,0,0,0-.319,0l-.319.319a.226.226,0,0,0,0,.319L3.338,5.916A.226.226,0,0,0,3.658,5.916Z" transform="translate(11.437 -0.563)"/>
+                <path class="check" id="Icon_awesome-check-circle-2" data-name="Icon awesome-check-circle" d="M7.563,4.063a3.5,3.5,0,1,1-3.5-3.5A3.5,3.5,0,0,1,7.563,4.063Zm-3.9,1.853,2.6-2.6a.226.226,0,0,0,0-.319L5.935,2.68a.226.226,0,0,0-.319,0L3.5,4.8l-.989-.989a.226.226,0,0,0-.319,0l-.319.319a.226.226,0,0,0,0,.319L3.338,5.916A.226.226,0,0,0,3.658,5.916Z" transform="translate(11.437 7.438)"/>
+                <path class="check" id="Icon_awesome-check-circle-3" data-name="Icon awesome-check-circle" d="M7.563,4.063a3.5,3.5,0,1,1-3.5-3.5A3.5,3.5,0,0,1,7.563,4.063Zm-3.9,1.853,2.6-2.6a.226.226,0,0,0,0-.319L5.935,2.68a.226.226,0,0,0-.319,0L3.5,4.8l-.989-.989a.226.226,0,0,0-.319,0l-.319.319a.226.226,0,0,0,0,.319L3.338,5.916A.226.226,0,0,0,3.658,5.916Z" transform="translate(11.437 15.438)"/>
+            </svg>
+
+            <span class="text">Vaardigheden</span>
+        </button>
+        <button class="nav-link" id="educationBtn" onclick="handleNav('education', false)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="31.504" height="26.999" viewBox="0 0 31.504 26.999">
+                <g id="Icon_ionic-ios-school" data-name="Icon ionic-ios-school" transform="translate(-2.317 -4.43)">
+                    <path id="Path_4" data-name="Path 4" d="M6.813,19.005v6.518a.569.569,0,0,0,.281.492l9.281,5.337a.564.564,0,0,0,.844-.492v-6.6a.569.569,0,0,0-.281-.492L7.657,18.506A.573.573,0,0,0,6.813,19.005Z"/>
+                    <path id="Path_5" data-name="Path 5" d="M19.751,31.352l9.288-5.337a.561.561,0,0,0,.281-.492V18.935a.565.565,0,0,0-.844-.492L19.2,23.78a.561.561,0,0,0-.281.492v6.6A.556.556,0,0,0,19.751,31.352Z"/>
+                    <path id="Path_6" data-name="Path 6" d="M17.508,4.577,2.6,13.282a.562.562,0,0,0,0,.977l14.906,8.283a1.132,1.132,0,0,0,1.118,0L31.852,14.97c.373-.218.492.056.492.492V26.248c0,.478.274.7.773.7h0a.693.693,0,0,0,.7-.7V14.168a.569.569,0,0,0-.281-.492l-14.913-9.1A1.132,1.132,0,0,0,17.508,4.577Z"/>
+                </g>
+            </svg>
+
+            <span class="text">Opleidingen</span>
+        </button>
+        <button class="nav-link" id="experienceBtn" onclick="handleNav('experience', false)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28.5" viewBox="0 0 30 28.5">
+                <path id="Icon_material-work" data-name="Icon material-work" d="M30,9H24V6a2.99,2.99,0,0,0-3-3H15a2.99,2.99,0,0,0-3,3V9H6a2.977,2.977,0,0,0-2.985,3L3,28.5a2.99,2.99,0,0,0,3,3H30a2.99,2.99,0,0,0,3-3V12A2.99,2.99,0,0,0,30,9ZM21,9H15V6h6Z" transform="translate(-3 -3)"/>
+            </svg>
+
+            <span class="text">Werkervaring</span>
+        </button>
+        <button class="nav-link" id="projectsBtn" onclick="handleNav('projects', false)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="36" viewBox="0 0 45 36">
+                <path id="Icon_awesome-project-diagram" data-name="Icon awesome-project-diagram" d="M27,22.5H18a2.25,2.25,0,0,0-2.25,2.25v9A2.25,2.25,0,0,0,18,36h9a2.25,2.25,0,0,0,2.25-2.25v-9A2.25,2.25,0,0,0,27,22.5ZM13.5,2.25A2.25,2.25,0,0,0,11.25,0h-9A2.25,2.25,0,0,0,0,2.25v9A2.25,2.25,0,0,0,2.25,13.5H8.98l5.144,9A4.485,4.485,0,0,1,18,20.25h.02L13.5,12.341V9H29.25V4.5H13.5ZM42.75,0h-9A2.25,2.25,0,0,0,31.5,2.25v9a2.25,2.25,0,0,0,2.25,2.25h9A2.25,2.25,0,0,0,45,11.25v-9A2.25,2.25,0,0,0,42.75,0Z"/>
+            </svg>
+
+            <span class="text">Projecten</span>
+        </button>
+        <button class="nav-link" id="contactBtn" onclick="handleNav('contact', false)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30.857" height="27.415" viewBox="0 0 30.857 27.415">
+                <path id="Icon_metro-bubbles" data-name="Icon metro-bubbles" d="M31.714,29.281a3.128,3.128,0,0,0,1.714,2.791V32.5a6.377,6.377,0,0,1-5.5-1.93,8.612,8.612,0,0,1-2.217.288C21.454,30.857,18,27.787,18,24s3.454-6.857,7.714-6.857,7.714,3.07,7.714,6.857A6.325,6.325,0,0,1,32,27.977a3.111,3.111,0,0,0-.285,1.3ZM16.286,5.143C23.744,5.143,29.812,9.981,30,16a10.511,10.511,0,0,0-4.281-.9,10.208,10.208,0,0,0-6.807,2.523A8.462,8.462,0,0,0,15.964,24a8.219,8.219,0,0,0,.743,3.423c-.14,0-.28.006-.421.006a16.938,16.938,0,0,1-2.138-.135c-2.946,2.946-6.462,3.474-9.862,3.552v-.721c1.836-.9,3.429-2.538,3.429-4.41a5.173,5.173,0,0,0-.058-.769,10.49,10.49,0,0,1-5.085-8.66c0-6.154,6.14-11.143,13.714-11.143Z" transform="translate(-2.571 -5.143)"/>
+            </svg>
+
+            <span class="text">Contact</span>
+        </button>
+
+        <button class="nav-link" id="menuBtn" onclick="handleMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="21" viewBox="0 0 30 21">
+                <g id="Icon_feather-menu" data-name="Icon feather-menu" transform="translate(-3 -7.5)">
+                    <path id="Path_7" data-name="Path 7" d="M4.5,18h27" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                    <path id="Path_8" data-name="Path 8" d="M4.5,9h27" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                    <path id="Path_9" data-name="Path 9" d="M4.5,27h27" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                </g>
+            </svg>
+            <span class="text">Menu</span>
+        </button>
+    </nav>
+    <section class="personalia">
+
+        <img class="person-logo" loading="lazy" src="images/person-pasfoto.png">
+        <h1 class="person-name">Jens Bouma</h1>
+        <p class="person-motto">Mijn naam is Jens Bouma en ik, als Web Developer, hou er van om websites te maken en ook van een drankje zo als je ziet.</p>
+
+        <div class="information">
+            <h1>Persoonlijke informatie</h1>
+            <div class="options">
+                <div class="option">
+                    <div class="icon">
+                        <svg class="mail-svg" xmlns="http://www.w3.org/2000/svg" width="34.178" height="27"
+                             viewBox="0 0 34.178 27">
+                            <g id="Icon_feather-mail" data-name="Icon feather-mail" transform="translate(-0.911 -4.5)">
+                                <path id="Path_9" data-name="Path 9"
+                                      d="M6,6H30a3.009,3.009,0,0,1,3,3V27a3.009,3.009,0,0,1-3,3H6a3.009,3.009,0,0,1-3-3V9A3.009,3.009,0,0,1,6,6Z"
+                                      stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                                <path id="Path_10" data-name="Path 10" d="M33,9,18,19.5,3,9" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="3"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="text">jensmbouma@kpnmail.nl</div>
+                </div>
+                <div class="option">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+                            <path id="Icon_awesome-phone-alt" data-name="Icon awesome-phone-alt"
+                                  d="M34.973,25.439,27.1,22.064a1.687,1.687,0,0,0-1.969.485L21.641,26.81A26.062,26.062,0,0,1,9.183,14.351l4.261-3.488A1.683,1.683,0,0,0,13.929,8.9L10.554,1.02A1.7,1.7,0,0,0,8.62.043L1.308,1.73A1.688,1.688,0,0,0,0,3.375,32.621,32.621,0,0,0,32.625,36a1.687,1.687,0,0,0,1.645-1.308l1.687-7.313a1.708,1.708,0,0,0-.985-1.941Z"
+                                  transform="translate(0 0)"/>
+                        </svg>
+                    </div>
+                    <div class="text">+31 6 11247589</div>
+                </div>
+                <div class="option">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="31.5" height="31.499" viewBox="0 0 31.5 31.499">
+                            <path id="Icon_awesome-linkedin-in" data-name="Icon awesome-linkedin-in"
+                                  d="M7.051,31.5H.52V10.47H7.051ZM3.782,7.6A3.8,3.8,0,1,1,7.564,3.783,3.814,3.814,0,0,1,3.782,7.6ZM31.493,31.5H24.976V21.263c0-2.44-.049-5.569-3.4-5.569-3.4,0-3.916,2.651-3.916,5.393V31.5H11.142V10.47h6.263v2.869H17.5a6.862,6.862,0,0,1,6.179-3.4c6.609,0,7.824,4.352,7.824,10.005V31.5Z"
+                                  transform="translate(0 -0.001)"/>
+                        </svg>
+
+                    </div>
+                    <div class="text href"
+                         onclick="window.location.href = 'https://www.linkedin.com/in/jens-bouma-5579a9193'">
+                        www.linkedin.com/in/jens-bouma-5579a9193
+                    </div>
+                </div>
+
+                <div class="option">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="30" viewBox="0 0 21 30">
+                            <path id="Icon_material-location-on" data-name="Icon material-location-on"
+                                  d="M18,3A10.492,10.492,0,0,0,7.5,13.5C7.5,21.375,18,33,18,33S28.5,21.375,28.5,13.5A10.492,10.492,0,0,0,18,3Zm0,14.25a3.75,3.75,0,1,1,3.75-3.75A3.751,3.751,0,0,1,18,17.25Z"
+                                  transform="translate(-7.5 -3)"/>
+                        </svg>
+                    </div>
+                    <div class="text">Zwolle</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="profile">
+        <section class="profile-content">
+            <div class="skills-education">
+                <article class="container" id="skills">
+                    <h1>Vaardigheden</h1>
+                    <div class="blocks">
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">HTML</div>
+                                <div class="when">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
+                                        <g id="Icon_feather-clock" data-name="Icon feather-clock"
+                                           transform="translate(-1.5 -1.5)">
+                                            <path id="Path_24" data-name="Path 24"
+                                                  d="M33,18A15,15,0,1,1,18,3,15,15,0,0,1,33,18Z" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                            <path id="Path_25" data-name="Path 25" d="M18,9v9l6,3" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                        </g>
+                                    </svg>
+                                    2018
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">CSS</div>
+                                <div class="when">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
+                                        <g id="Icon_feather-clock" data-name="Icon feather-clock"
+                                           transform="translate(-1.5 -1.5)">
+                                            <path id="Path_24" data-name="Path 24"
+                                                  d="M33,18A15,15,0,1,1,18,3,15,15,0,0,1,33,18Z" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                            <path id="Path_25" data-name="Path 25" d="M18,9v9l6,3" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                        </g>
+                                    </svg>
+                                    2018
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">JavaScript</div>
+                                <div class="when">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
+                                        <g id="Icon_feather-clock" data-name="Icon feather-clock"
+                                           transform="translate(-1.5 -1.5)">
+                                            <path id="Path_24" data-name="Path 24"
+                                                  d="M33,18A15,15,0,1,1,18,3,15,15,0,0,1,33,18Z" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                            <path id="Path_25" data-name="Path 25" d="M18,9v9l6,3" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                        </g>
+                                    </svg>
+                                    2019
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">PHP</div>
+                                <div class="when">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
+                                        <g id="Icon_feather-clock" data-name="Icon feather-clock"
+                                           transform="translate(-1.5 -1.5)">
+                                            <path id="Path_24" data-name="Path 24"
+                                                  d="M33,18A15,15,0,1,1,18,3,15,15,0,0,1,33,18Z" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                            <path id="Path_25" data-name="Path 25" d="M18,9v9l6,3" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                        </g>
+                                    </svg>
+                                    2019
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">C#</div>
+                                <div class="when">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
+                                        <g id="Icon_feather-clock" data-name="Icon feather-clock"
+                                           transform="translate(-1.5 -1.5)">
+                                            <path id="Path_24" data-name="Path 24"
+                                                  d="M33,18A15,15,0,1,1,18,3,15,15,0,0,1,33,18Z" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                            <path id="Path_25" data-name="Path 25" d="M18,9v9l6,3" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                        </g>
+                                    </svg>
+                                    2023
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">Java</div>
+                                <div class="when">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
+                                        <g id="Icon_feather-clock" data-name="Icon feather-clock"
+                                           transform="translate(-1.5 -1.5)">
+                                            <path id="Path_24" data-name="Path 24"
+                                                  d="M33,18A15,15,0,1,1,18,3,15,15,0,0,1,33,18Z" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                            <path id="Path_25" data-name="Path 25" d="M18,9v9l6,3" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                        </g>
+                                    </svg>
+                                    2023
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">React</div>
+                                <div class="when">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
+                                        <g id="Icon_feather-clock" data-name="Icon feather-clock"
+                                           transform="translate(-1.5 -1.5)">
+                                            <path id="Path_24" data-name="Path 24"
+                                                  d="M33,18A15,15,0,1,1,18,3,15,15,0,0,1,33,18Z" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                            <path id="Path_25" data-name="Path 25" d="M18,9v9l6,3" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                        </g>
+                                    </svg>
+                                    2020
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">Vue</div>
+                                <div class="when">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
+                                        <g id="Icon_feather-clock" data-name="Icon feather-clock"
+                                           transform="translate(-1.5 -1.5)">
+                                            <path id="Path_24" data-name="Path 24"
+                                                  d="M33,18A15,15,0,1,1,18,3,15,15,0,0,1,33,18Z" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                            <path id="Path_25" data-name="Path 25" d="M18,9v9l6,3" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                        </g>
+                                    </svg>
+                                    2020
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">Laravel</div>
+                                <div class="when">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
+                                        <g id="Icon_feather-clock" data-name="Icon feather-clock"
+                                           transform="translate(-1.5 -1.5)">
+                                            <path id="Path_24" data-name="Path 24"
+                                                  d="M33,18A15,15,0,1,1,18,3,15,15,0,0,1,33,18Z" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                            <path id="Path_25" data-name="Path 25" d="M18,9v9l6,3" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                        </g>
+                                    </svg>
+                                    2019
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">Scrum</div>
+                                <div class="when">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
+                                        <g id="Icon_feather-clock" data-name="Icon feather-clock"
+                                           transform="translate(-1.5 -1.5)">
+                                            <path id="Path_24" data-name="Path 24"
+                                                  d="M33,18A15,15,0,1,1,18,3,15,15,0,0,1,33,18Z" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                            <path id="Path_25" data-name="Path 25" d="M18,9v9l6,3" fill="none"
+                                                  stroke="#000" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="3"/>
+                                        </g>
+                                    </svg>
+                                    2019
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="container" id="education">
+                    <h1>Opleidingen</h1>
+                    <div class="blocks">
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">HBO-ICT</div>
+                                <div class="when">Sept 2022 - Heden</div>
+                            </div>
+                            <div class="location">Hogeschool Windesheim, Zwolle</div>
+                        </div>
+
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">Applicatie & Mediaontwikkelaar</div>
+                                <div class="when">Sept 2019 - Feb 2022 (Versneld)</div>
+                            </div>
+                            <div class="location">Landstede MBO, Zwolle</div>
+                        </div>
+
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">VMBO-TL</div>
+                                <div class="when">Sept 2015 - Mei 2019</div>
+                            </div>
+                            <div class="location">Het CCC, Zwolle</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="container" id="experience">
+                    <h1>Werkervaring</h1>
+
+                    <div class="blocks">
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">Delifrance/TasteTheJoy (Bijbaan)</div>
+                                <div class="when">Maart 2018 - Heden</div>
+                            </div>
+                            <div class="location">Zwolle</div>
+                        </div>
+
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">UwBoeking.com (Stage)</div>
+                                <div class="when">Okt 2021 - Feb 2022</div>
+                            </div>
+                            <div class="location">Zwolle</div>
+                        </div>
+
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">Tradecast (Stage)</div>
+                                <div class="when">Sept 2020 - Feb 2021</div>
+                            </div>
+                            <div class="location">Zwolle</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="container" id="projects">
+                    <h1>Projecten</h1>
+                    <div class="blocks">
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">Formation Builder</div>
+                                <div class="when">Jan 2024 - Heden</div>
+                            </div>
+                            <div class="description">
+                                Formation Builder is een website/webapp waarmee je een voetbal opstelling kunt maken. In een paar dagen dat ik vrij had, heb ik dit gemaakt om te gebruiken bij mijn voetbal team.
+                            </div>
+                            <div class="location href" onclick="window.location.href = 'https://www.formationbuilder.com'">https://www.formationbuilder.com</div>
+                        </div>
+
+                        <div class="block">
+                            <div class="title">
+                                <div class="text">Rijschool Arjan Kok</div>
+                                <div class="when">Feb 2021 - Heden</div>
+                            </div>
+                            <div class="description">
+                                Destijds tijdens de rijlessen heb ik een website voor mijn rijschool gemaakt.
+                            </div>
+                            <div class="location href" onclick="window.location.href = 'https://www.rijschool-arjankok.nl'">https://www.rijschool-arjankok.nl</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="container" id="contact">
+                    <h1>Contact</h1>
+                    <form method="post" onsubmit="handleForm(event)">
+                        <div class="small-inputs">
+                            <label for="firstName">
+                                <p>Voornaam * <span class="charLength firstNameCharcount"></span></p>
+                                <input maxlength="60" id="firstName" type="text" name="firstName" placeholder="Voornaam" required>
+                            </label>
+                            <label for="lastName">
+                                <p>Achternaam * <span class="charLength lastNameCharcount"></span></p>
+                                <input maxlength="60" id="lastName" type="text" name="lastName" placeholder="Achternaam" required>
+                            </label>
+                        </div>
+                        <div class="inputs big">
+                            <label>
+                                <p>Telefoonnummer * <span class="charLength phonenumberCharcount"></span></p>
+                                <input maxlength="20" id="phoneNumber" type="tel" name="phonenumber" placeholder="Telefoonnummer" required>
+                            </label>
+                            <label>
+                                <p>E-mailadres * <span class="charLength emailCharcount"></span></p>
+                                <input maxlength="80" id="email" type="email" name="email" placeholder="E-mailadres" required>
+                            </label>
+                            <label>
+                                <p>Onderwerp * <span class="charLength subjectCharcount"></span></p>
+                                <input maxlength="200" id="subject" type="text" name="subject" placeholder="Onderwerp" required>
+                            </label>
+                            <label>
+                                <p>Bericht * <span class="charLength messageCharcount"></span></p>
+                                <textarea maxlength="600" onkeyup="inputCheckText(event.target)" name="message" id="message"></textarea>
+                            </label>
+                        </div>
+
+                        <div class="captcha" id="captcha">
+                            <p><b>Vraag: </b>Benoem een van mijn vaardigheden:</p>
+                            <div class="inputs-captcha">
+                                <input name="captchaText" id="captchaText" type="text" minlength="1" maxlength="60" required>
+                                <div class="btn-verify-captcha" onclick="onSubmitCaptcha()" id="captcha-verify">Verifiëren</div>
+
+                            </div>
+                            <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="33.75" height="35.997" viewBox="0 0 33.75 35.997">
+                                <path id="Icon_awesome-shield-alt" data-name="Icon awesome-shield-alt" d="M32.8,5.885,19.3.26a3.386,3.386,0,0,0-2.595,0L3.206,5.885A3.371,3.371,0,0,0,1.125,9c0,13.957,8.051,23.6,15.574,26.74a3.386,3.386,0,0,0,2.595,0C25.32,33.23,34.875,24.56,34.875,9A3.376,3.376,0,0,0,32.8,5.885ZM18.007,31.38,18,4.591,30.368,9.745C30.136,20.391,24.6,28.1,18.007,31.38Z" transform="translate(-1.125 -0.002)"/>
+                            </svg>
+                            Captcha door Jens Bouma
+                        </span>
+                            <svg class="check" xmlns="http://www.w3.org/2000/svg" width="36" height="26.846" viewBox="0 0 36 26.846">
+                                <path id="Icon_awesome-check" data-name="Icon awesome-check" d="M12.227,30.9.527,19.2a1.8,1.8,0,0,1,0-2.546L3.073,14.1a1.8,1.8,0,0,1,2.546,0L13.5,21.986,30.382,5.1a1.8,1.8,0,0,1,2.546,0L35.473,7.65a1.8,1.8,0,0,1,0,2.546l-20.7,20.7A1.8,1.8,0,0,1,12.227,30.9Z" transform="translate(0 -4.577)"/>
+                            </svg>
+                        </div>
+
+                        <button id="send-btn" class="send-btn disabled">Verstuur</button>
+                    </form>
+                </article>
+
+                <article class="container" id="msgSend">
+                    <h1>Bericht verstuurd</h1>
+                    <div class="message">
+                        <p><b>De volgende informatie is meegegeven aan het bericht:</b></p>
+                        <p id="firstNameSended">Voornaam: </p>
+                        <p id="lastNameSended">Achternaam: </p>
+                        <p id="phonenumberSended">Telefoonnummer: </p>
+                        <p id="emailSended">E-mailadres: </p>
+                        <p id="subjectSended">Onderwerp: </p>
+                        <p id="messageSended">Bericht: </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </section>
+
+    <section class="gdpr-consent hide">
+
+        <div class="gdpr-consent__description">
+            <p>Deze website gebruikt cookies.
+                We gebruiken cookies om content te personaliseren, voor social media en het analyseren
+                van verkeer op de website, advertenties.</p>
+        </div>
+
+        <div class="gdpr-consent__choice">
+            <button class="gdpr-consent__button--accept">Ja, natuurlijk</button>
+            <button class="gdpr-consent__button--reject">Neu, misschien later</button>
+        </div>
+
+    </section>
+</div>
+
+</body>
+</html>

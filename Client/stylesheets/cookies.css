@@ -1,0 +1,88 @@
+.gdpr-consent {
+    position: fixed;
+    bottom: 50px;
+    width: calc(100vw - 20px);
+    max-width: 500px;
+    padding: 25px 20px;
+    box-sizing: border-box;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0px 3px 20px -2px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    animation: move-in-bottom linear 0.3s;
+}
+
+@keyframes move-in-bottom {
+    0% {
+        opacity: 0;
+    }
+
+}
+
+.gdpr-consent.hide {
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.gdpr-consent.show {
+    opacity: 1;
+    pointer-events: auto;
+    transition: 0.3s;
+}
+
+.gdpr-consent p {
+    color: #424242;
+}
+
+.gdpr-consent__choice {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.gdpr-consent__choice button {
+    width: auto;
+    max-width: 175px;
+    flex-grow: 1;
+    padding: 10px 20px;
+    background-color: #424242;
+    color: white;
+    border: 0;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.gdpr-consent__choice button:hover {
+    filter: brightness(90%);
+}
+
+.gdpr-consent__choice button:first-child {
+    background-color: #2181e0;
+}
+
+@media only screen and (max-width: 450px) {
+    .gdpr-consent__choice button {
+        max-width: 100%;
+    }
+}
